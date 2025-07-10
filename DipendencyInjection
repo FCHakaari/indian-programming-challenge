@@ -1,0 +1,58 @@
+public class MyClass
+{
+    private IMyInterface myInterface;
+
+    public MyClass(IMyInterface myInterface)
+    {
+        this.myInterface = myInterface;
+    }
+
+    public void Method()
+    {
+        myInterface.InnerMethod();
+    }
+}
+
+public class MyClass_2 : IMyInterface
+{
+    public void InnerMethod()
+    {
+        Console.WriteLine("MyClass_2");
+    }
+}
+
+public class MyClass_3 : IMyInterface
+{
+    public void InnerMethod()
+    {
+        Console.WriteLine("MyClass_3");
+    }
+}
+
+public class MyClass_3 : IMyInterface
+{
+    public void InnerMethod()
+    {
+        Console.WriteLine("MyClass_3");
+    }
+}
+
+
+
+public interface IMyInterface
+{
+    public void InnerMethod();
+}
+
+MyClass_2 item_1 = new();
+MyClass_3 item_2 = new();
+
+MyClass realize_1 = new(item_1);
+MyClass realize_2 = new(item_2);
+
+realize_1.InnerMethod(); // MyClass_2
+realize_2.InnerMethod(); // MyClass_3
+
+    IMyInterface
+    /           \
+MyClass_2       MyClass_3
